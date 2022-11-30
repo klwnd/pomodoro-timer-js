@@ -14,6 +14,10 @@ playButton.addEventListener("click", pomodoroStartPauseControl);
 let resetButton = document.querySelector("#reset");
 resetButton.addEventListener("click", pomodoroReset);
 
+let stateDiv = document.querySelector("#title");
+
+let windowBg = document.querySelector(".main");
+
 let timerStatus = document.querySelector("#status");
 let sessionCircleDiv = document.querySelectorAll(".session > .circle");
 
@@ -54,7 +58,7 @@ function pomodoroTimerTick()
     if(secondsLeft == 0)
     {
         minutesLeft--;
-        secondsLeft = 60;
+        secondsLeft = 3;
     }
 
     secondsLeft--;
@@ -87,6 +91,8 @@ function pomodoroReset()
     secondsLeft = 0;
     state = "setup";
     session = 0;
+    stateDiv.innerHTML = "Pomodoro Timer";
+    windowBg.classList.toggle("break-bg");
     pomodoroPrepareTime();
     timerStatus.innerHTML = "Minutes left";
     for (let session of sessionCircleDiv)
@@ -101,30 +107,36 @@ function changeState()
     {
         case "work":
             pomodoroTimerTickStop();
+            windowBg.classList.toggle("break-bg");
             if(session == 4)
             {
                 setLongBreak();
+                stateDiv.innerHTML = "Long break time";
             }
             else
             {
                 state = "break";
                 minutesLeft = breakTime;
+                stateDiv.innerHTML = "Rest now";
             }
             break;
         case "break":
             pomodoroTimerTickStop();
             state = "work";
             minutesLeft = workTime;
-            modifySessionNumber();
-            break;
-        case "setup":
-            state = "work"
-            minutesLeft = workTime;
+            windowBg.classList.toggle("break-bg");
+            stateDiv.innerHTML = "Stay Focus now";
             modifySessionNumber();
             break;
         case "longBreak":
             pomodoroReset();
             console.log("longBreakEnd");
+            break;
+        case "setup":
+            state = "work"
+            minutesLeft = workTime;
+            modifySessionNumber();
+            stateDiv.innerHTML = "Stay Focus now";
             break;
     }
 
@@ -142,5 +154,5 @@ function setLongBreak()
 {
     state = "longBreak";
     minutesLeft = longBreakTime;
-    console.log("longBreakStart");
+    console.log("longBreakStart"); 
 }
