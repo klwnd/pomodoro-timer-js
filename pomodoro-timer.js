@@ -1,5 +1,6 @@
-let workTime = 2; 
+let workTime = 1; 
 let breakTime = 1;
+let longBreakTime = 1;
 let minutesLeft = workTime;
 let secondsLeft = 0;
 let state = "setup";
@@ -100,8 +101,15 @@ function changeState()
     {
         case "work":
             pomodoroTimerTickStop();
-            state = "break";
-            minutesLeft = breakTime;
+            if(session == 4)
+            {
+                setLongBreak();
+            }
+            else
+            {
+                state = "break";
+                minutesLeft = breakTime;
+            }
             break;
         case "break":
             pomodoroTimerTickStop();
@@ -114,6 +122,10 @@ function changeState()
             minutesLeft = workTime;
             modifySessionNumber();
             break;
+        case "longBreak":
+            pomodoroReset();
+            console.log("longBreakEnd");
+            break;
     }
 
     secondsLeft = 0;
@@ -124,4 +136,11 @@ function modifySessionNumber()
 {
     session ++;
     sessionCircleDiv[session-1].classList.add("done");
+}
+
+function setLongBreak()
+{
+    state = "longBreak";
+    minutesLeft = longBreakTime;
+    console.log("longBreakStart");
 }
