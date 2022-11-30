@@ -37,7 +37,10 @@ function pomodoroStartPauseControl()
         timerStatus.innerHTML = "Pause";
     }
 
-   changeState();
+   if(state == "setup")
+   {
+    changeState();
+   }
 }
 
 function updateTimeOnScreen()
