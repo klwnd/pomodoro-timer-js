@@ -92,7 +92,7 @@ function pomodoroReset()
     state = "setup";
     session = 0;
     stateDiv.innerHTML = "Pomodoro Timer";
-    windowBg.classList.toggle("break-bg");
+    windowBg.classList.remove("break-bg");
     pomodoroPrepareTime();
     timerStatus.innerHTML = "Minutes left";
     for (let session of sessionCircleDiv)
@@ -125,7 +125,7 @@ function changeState()
             state = "work";
             minutesLeft = workTime;
             windowBg.classList.toggle("break-bg");
-            stateDiv.innerHTML = "Stay Focus now";
+            stateDiv.innerHTML = "Stay Focus Now";
             modifySessionNumber();
             break;
         case "longBreak":
@@ -136,7 +136,7 @@ function changeState()
             state = "work"
             minutesLeft = workTime;
             modifySessionNumber();
-            stateDiv.innerHTML = "Stay Focus now";
+            stateDiv.innerHTML = "Stay Focus Now";
             break;
     }
 

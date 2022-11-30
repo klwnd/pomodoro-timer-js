@@ -27,6 +27,8 @@ body {
     flex-direction: column;
     padding: 10px;
     border-radius: 20px;
+
+    /* align-items: center; */
 }
 
 .header p {
@@ -45,6 +47,14 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
+    /* border-radius: 100%;
+    border: 2px solid rgb(255, 255, 255);
+    width: 300px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center; */
 }
 
 .time {
