@@ -1,6 +1,6 @@
 let workTime = 30; 
 let breakTime = 5;
-let longBreakTime = 60;
+let longBreakTime = 30;
 let minutesLeft = workTime;
 let secondsLeft = 0;
 let state = "setup";
@@ -25,6 +25,8 @@ let timerStatus = document.querySelector("#status");
 let sessionCircleDiv = document.querySelectorAll(".session > .circle");
 
 let timeLeftScreen = document.querySelector("#time-left");
+
+let appTitle = document.querySelector("title");
 
 let pomodoroTimer;
 
@@ -54,6 +56,14 @@ function pomodoroStartPauseControl()
 function updateTimeOnScreen()
 {
     timeLeftScreen.innerHTML = pomodoroTimeLeft;
+    if(state == "work")
+    {
+        appTitle.innerText = pomodoroTimeLeft + " - Focus Time";
+    }
+    else if (state == "break" || state == "longBreak")
+    {
+        appTitle.innerText = pomodoroTimeLeft + " - Break Time";
+    }
 }
 
 function pomodoroTimerTick() 
@@ -61,7 +71,7 @@ function pomodoroTimerTick()
     if(secondsLeft == 0)
     {
         minutesLeft--;
-        secondsLeft = 3;
+        secondsLeft = 60;
     }
 
     secondsLeft--;
@@ -95,6 +105,7 @@ function pomodoroReset()
     state = "setup";
     session = 0;
     stateDiv.innerHTML = "Pomodoro Timer";
+    appTitle.innerText = "Let's begin work with Pomodoro!";
     windowBg.classList.remove("break-bg");
     pomodoroPrepareTime();
     timerStatus.innerHTML = "Minutes left";
@@ -133,7 +144,6 @@ function changeState()
             break;
         case "longBreak":
             pomodoroReset();
-            console.log("longBreakEnd");
             break;
         case "setup":
             state = "work"
@@ -157,7 +167,6 @@ function setLongBreak()
 {
     state = "longBreak";
     minutesLeft = longBreakTime;
-    console.log("longBreakStart"); 
 }
 
 function showSettingsBox()
