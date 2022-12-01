@@ -1,6 +1,6 @@
-let workTime = 1; 
-let breakTime = 1;
-let longBreakTime = 1;
+let workTime = 30; 
+let breakTime = 5;
+let longBreakTime = 60;
 let minutesLeft = workTime;
 let secondsLeft = 0;
 let state = "setup";
@@ -163,5 +163,32 @@ function setLongBreak()
 function showSettingsBox()
 {
     document.querySelector("#settingsBox").classList.toggle("show-hide-settings-box");
+
+    let sWorkTime = document.querySelector(".settings-box form #sWorkTime");
+    let sBreakTime = document.querySelector(".settings-box form #sBreakTime");
+    let sLongBreakTime = document.querySelector(".settings-box form #sLongBreakTime");
+
+    sWorkTime.onchange = function() {
+        workTime = this.options[this.selectedIndex].value;
+        pomodoroReset();
+    };
+
+    sBreakTime.onchange = function() {
+        breakTime = this.options[this.selectedIndex].value;
+        pomodoroReset();
+    };
+
+    sLongBreakTime.onchange = function() {
+        longBreakTime = this.options[this.selectedIndex].value;
+        pomodoroReset();
+    };
+    
+    updateValueInSettingsBox(sWorkTime, sBreakTime, sLongBreakTime);
 }
 
+function updateValueInSettingsBox(sWorkTime, sBreakTime, sLongBreakTime)
+{
+    Array.from(sWorkTime.options).find(item => item.value == workTime).selected = true;
+    Array.from(sBreakTime.options).find(item => item.value == breakTime).selected = true;
+    Array.from(sLongBreakTime.options).find(item => item.value == longBreakTime).selected = true;
+}
