@@ -14,6 +14,9 @@ playButton.addEventListener("click", pomodoroStartPauseControl);
 let resetButton = document.querySelector("#reset");
 resetButton.addEventListener("click", pomodoroReset);
 
+let settingsButton = document.querySelector("#settings");
+settingsButton.addEventListener("click", showSettingsBox);
+
 let stateDiv = document.querySelector("#title");
 
 let windowBg = document.querySelector(".main");
@@ -156,3 +159,9 @@ function setLongBreak()
     minutesLeft = longBreakTime;
     console.log("longBreakStart"); 
 }
+
+function showSettingsBox()
+{
+    document.querySelector("#settingsBox").classList.toggle("show-hide-settings-box");
+}
+
