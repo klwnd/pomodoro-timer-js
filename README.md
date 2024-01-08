@@ -4,7 +4,6 @@
 ![PomodoroTimer settings](https://github.com/klwnd/pomodoro-timer-js/blob/master/readme-img/2.jpg)
 
 
-# About the app
 ## Features:
 - working time countdown
 - break time countdown
