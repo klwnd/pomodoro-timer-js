@@ -1,7 +1,7 @@
 # Pomodoro Timer written in JS, HTML and CSS.
 
-![PomodoroTimer Main](http://url/to/img.png)
-![PomodoroTimer settings](http://url/to/img.png)
+![PomodoroTimer](https://github.com/klwnd/pomodoro-timer-js/blob/master/readme-img/1.jpg)
+![PomodoroTimer settings](https://github.com/klwnd/pomodoro-timer-js/blob/master/readme-img/2.jpg)
 
 
 # About the app
