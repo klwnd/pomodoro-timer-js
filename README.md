@@ -1,5 +1,10 @@
 # Pomodoro Timer written in JS, HTML and CSS.
 
+![PomodoroTimer Main](http://url/to/img.png)
+![PomodoroTimer settings](http://url/to/img.png)
+
+
+# About the app
 ## Features:
 - working time countdown
 - break time countdown
